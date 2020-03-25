@@ -1,6 +1,12 @@
 package tech.plateauu.validator;
 
+import tech.plateauu.validator.SimpleFlag.ValidateOperandResult;
+
+import java.util.List;
+
 public interface Flag {
 
-	boolean validate(String[] args);
+	SimpleFlag.FlagPair parse(String[] args);
+
+	List<ValidateOperandResult> validate(List<SimpleFlag.FlagPair> args);
 }
