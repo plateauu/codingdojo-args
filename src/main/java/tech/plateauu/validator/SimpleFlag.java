@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
-//TODO Need to be rethinking
+//TODO Need to be rethinking this
 public class SimpleFlag implements Flag {
 
 	private final String name;
@@ -38,6 +37,7 @@ public class SimpleFlag implements Flag {
 		};
 	}
 
+	@Override
 	public List<ValidateOperandResult> validate(List<FlagPair> pairs) {
 		return pairs.stream()
 					.map(this::validateOperand)
