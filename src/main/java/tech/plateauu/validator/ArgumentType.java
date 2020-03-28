@@ -1,13 +1,13 @@
 package tech.plateauu.validator;
 
-public enum ArgType {
-	FLAG(false),
+public enum ArgumentType {
+	SINGLE(false),
 	//TODO Need to change name
-	ARGUMENT(true);
+	DUAL(true);
 
 	final boolean operand;
 
-	ArgType(boolean operand) {
+	ArgumentType(boolean operand) {
 		this.operand = operand;
 	}
 }
