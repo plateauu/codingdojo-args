@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Flag {
 
-	SimpleFlag.FlagPair parse(String[] args);
+	SimpleFlag.Argument parse(String[] args);
 
-	List<ValidateOperandResult> validate(List<SimpleFlag.FlagPair> args);
+	List<ValidateOperandResult> validate(List<SimpleFlag.Argument> args);
 }

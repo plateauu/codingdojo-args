@@ -9,20 +9,17 @@ public class SimpleFlag implements Flag {
 
 	private final String name;
 	private final ArgType type;
-	private final boolean optional;
 
 	public SimpleFlag(
 			String name,
-			ArgType type,
-			boolean optional
+			ArgType type
 	) {
 		this.name = name;
 		this.type = type;
-		this.optional = optional;
 	}
 
 	@Override
-	public FlagPair parse(String[] args) {
+	public Argument parse(String[] args) {
 		var argList = Arrays.stream(args)
 							.collect(Collectors.toUnmodifiableList());
 
@@ -30,21 +27,21 @@ public class SimpleFlag implements Flag {
 			return null;
 		}
 
-		var flagIndex = argList.indexOf("-" + name);
+		var idx = argList.indexOf(name);
 		return switch (type) {
-			case ARGUMENT -> FlagPair.operand(name, argList.get(flagIndex + 1));
-			case FLAG -> FlagPair.flag(name);
+			case ARGUMENT -> Argument.operand(name, argList.get(idx + 1));
+			case FLAG -> Argument.flag(name);
 		};
 	}
 
 	@Override
-	public List<ValidateOperandResult> validate(List<FlagPair> pairs) {
+	public List<ValidateOperandResult> validate(List<Argument> pairs) {
 		return pairs.stream()
 					.map(this::validateOperand)
 					.collect(Collectors.toList());
 	}
 
-	private ValidateOperandResult validateOperand(FlagPair pair) {
+	private ValidateOperandResult validateOperand(Argument pair) {
 		if (type.operand && pair.validateOperand()) {
 			return new ValidateOperandResult(pair);
 		}
@@ -52,24 +49,24 @@ public class SimpleFlag implements Flag {
 	}
 
 	private boolean isPresent(List<String> args) {
-		return args.contains("-" + name);
+		return args.contains(name);
 	}
 
-	static class FlagPair {
+	static class Argument {
 		String flag;
 		String operand;
 
-		private FlagPair(String flag, String operand) {
+		private Argument(String flag, String operand) {
 			this.flag = flag;
 			this.operand = operand;
 		}
 
-		private static FlagPair flag(String name) {
-			return new FlagPair(name, null);
+		private static Argument flag(String name) {
+			return new Argument(name, null);
 		}
 
-		private static FlagPair operand(String name, String operand) {
-			return new FlagPair(name, operand);
+		private static Argument operand(String name, String operand) {
+			return new Argument(name, operand);
 		}
 
 		private boolean validateOperand() {
@@ -82,12 +79,13 @@ public class SimpleFlag implements Flag {
 			OK, ERROR
 		}
 
-		private ValidateOperandResult(FlagPair pair) {
-			this.validate = Result.OK;
-			this.pair = pair;
-		}
+		private final Argument argument;
 
 		private final Result validate;
-		private final FlagPair pair;
+
+		private ValidateOperandResult(Argument argument) {
+			this.validate = Result.OK;
+			this.argument = argument;
+		}
 	}
 }

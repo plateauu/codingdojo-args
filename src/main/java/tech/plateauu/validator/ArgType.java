@@ -1,7 +1,9 @@
 package tech.plateauu.validator;
 
-enum ArgType {
-	FLAG(false), ARGUMENT(true);
+public enum ArgType {
+	FLAG(false),
+	//TODO Need to change name
+	ARGUMENT(true);
 
 	final boolean operand;
 

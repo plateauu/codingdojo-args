@@ -9,7 +9,7 @@ class ArgumentSchemaValidatorTest {
 	@DisplayName("Should log something")
 	void shouldLogSomething() {
 		var validator = new ArgumentSchemaValidator();
-		validator.validate(new String[] { "dupa", "blada" });
+		validator.validate(new String[]{"dufpa", "blada"});
 	}
 
 }
