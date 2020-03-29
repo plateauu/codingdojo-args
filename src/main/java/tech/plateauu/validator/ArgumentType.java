@@ -10,4 +10,12 @@ public enum ArgumentType {
 	ArgumentType(boolean operand) {
 		this.operand = operand;
 	}
+
+	public boolean isSingleType() {
+		return this == SINGLE;
+	}
+
+	public boolean isNotSingle() {
+		return !isSingleType();
+	}
 }

@@ -34,57 +34,7 @@ public class SimpleFlagDefinition implements FlagDefinition {
 		};
 	}
 
-	@Override
-	public List<ValidateOperandResult> validate(List<Flag> flags) {
-		return flags.stream()
-					.map(this::validateOperand)
-					.collect(Collectors.toList());
-	}
-
-	private ValidateOperandResult validateOperand(Flag flag) {
-		if (type.operand && flag.validateOperand()) {
-			return new ValidateOperandResult(flag);
-		}
-		throw new RuntimeException("Field " + name + " has is operand flag but operand is [ " + flag.operand + "]");
-	}
-
 	private boolean isPresent(List<String> args) {
 		return args.contains(name);
-	}
-
-	static class Flag {
-		String flag;
-		String operand;
-
-		private Flag(String flag, String operand) {
-			this.flag = flag;
-			this.operand = operand;
-		}
-
-		private static Flag single(String name) {
-			return new Flag(name, null);
-		}
-
-		private static Flag dual(String name, String operand) {
-			return new Flag(name, operand);
-		}
-
-		private boolean validateOperand() {
-			return flag != null && operand != null;
-		}
-	}
-
-	static class ValidateOperandResult {
-		private final Flag flag;
-		private final Result validate;
-
-		private ValidateOperandResult(Flag flag) {
-			this.validate = Result.OK;
-			this.flag = flag;
-		}
-
-		private enum Result {
-			OK, ERROR
-		}
 	}
 }
