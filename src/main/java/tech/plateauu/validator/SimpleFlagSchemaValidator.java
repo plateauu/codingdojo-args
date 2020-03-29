@@ -3,7 +3,7 @@ package tech.plateauu.validator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SimpleFlagSchemaValidator implements FlagSchemaValidator {
+class SimpleFlagSchemaValidator implements FlagSchemaValidator {
 
 	@Override
 	public List<ValidateOperandResult> validate(List<Flag> flags) {

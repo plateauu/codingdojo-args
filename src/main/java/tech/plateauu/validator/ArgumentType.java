@@ -1,21 +1,20 @@
 package tech.plateauu.validator;
 
-public enum ArgumentType {
+enum ArgumentType {
 	SINGLE(false),
-	//TODO Need to change name
 	DUAL(true);
 
-	final boolean operand;
+	private final boolean operand;
 
 	ArgumentType(boolean operand) {
 		this.operand = operand;
 	}
 
-	public boolean isSingleType() {
+	boolean isSingleType() {
 		return this == SINGLE;
 	}
 
-	public boolean isNotSingle() {
+	boolean isNotSingle() {
 		return !isSingleType();
 	}
 }

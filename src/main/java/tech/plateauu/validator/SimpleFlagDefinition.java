@@ -4,15 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SimpleFlagDefinition implements FlagDefinition {
+class SimpleFlagDefinition implements FlagDefinition {
 
 	private final String name;
 	private final ArgumentType type;
 
-	public SimpleFlagDefinition(
-			String name,
-			ArgumentType type
-	) {
+	SimpleFlagDefinition(String name, ArgumentType type) {
 		this.name = name;
 		this.type = type;
 	}

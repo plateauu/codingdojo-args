@@ -18,7 +18,7 @@ class SimpleFlagDefinitionTest extends Specification {
         argument
 
         and:
-        argument.flag == expectedFlag
+        argument.name == expectedFlag
         argument.operand == expectedOperand
     }
 
@@ -36,7 +36,7 @@ class SimpleFlagDefinitionTest extends Specification {
         result
 
         and:
-        result.flag == expectedFlag
+        result.name == expectedFlag
         result.operand == expectedOperand
     }
 

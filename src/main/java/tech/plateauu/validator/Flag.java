@@ -1,12 +1,12 @@
 package tech.plateauu.validator;
 
 class Flag {
-	private final String flag;
+	private final String name;
 	private final String operand;
 	private final ArgumentType type;
 
-	private Flag(String flag, String operand, ArgumentType type) {
-		this.flag = flag;
+	private Flag(String name, String operand, ArgumentType type) {
+		this.name = name;
 		this.operand = operand;
 		this.type = type;
 	}
@@ -20,13 +20,13 @@ class Flag {
 	}
 
 	void validateOperand() {
-		if (type.isSingleType() && flag != null) {
+		if (type.isSingleType() && name != null) {
 			return;
 		}
-		if (type.isNotSingle() && flag != null && operand != null) {
+		if (type.isNotSingle() && name != null && operand != null) {
 			return;
 		}
-		throw new RuntimeException("Field " + flag + " has is operand flag but operand is [ " + operand + "]");
+		throw new RuntimeException("Field " + name + " has is operand flag but operand is [ " + operand + "]");
 	}
 
 }

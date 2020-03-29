@@ -3,8 +3,9 @@ package tech.plateauu.validator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ArgumentSchemaValidator {
 
@@ -20,10 +21,16 @@ public class ArgumentSchemaValidator {
 		//do nothing
 	}
 
-	public void validate(String[] arguments) {
-		log.info("Arguments passed:");
-		AtomicInteger counter = new AtomicInteger(1);
-		Arrays.stream(arguments)
-			  .forEach(a -> log.info("Argument[{}]: {}", counter.getAndIncrement(), a));
+	public List<ValidateOperandResult> validate(String[] arguments) {
+		var definition = new SimpleFlagDefinition("-d", ArgumentType.DUAL);
+		var flag = definition.parse(arguments);
+		if (flag == null) {
+			return List.of(ValidateOperandResult.error(flag));
+		}
+		var validator = new SimpleFlagSchemaValidator();
+		return validator.validate(List.of(flag))
+						.stream()
+						.filter(Objects::nonNull)
+						.collect(Collectors.toUnmodifiableList());
 	}
 }

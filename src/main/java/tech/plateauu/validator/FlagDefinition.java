@@ -1,6 +1,6 @@
 package tech.plateauu.validator;
 
-public interface FlagDefinition {
+interface FlagDefinition {
 
 	Flag parse(String[] args);
 
