@@ -9,24 +9,28 @@ import java.util.stream.Collectors;
 
 public class ArgumentSchemaValidator {
 
-	private static Logger log = LoggerFactory.getLogger(
-			ArgumentSchemaValidator.class.getName()
-	);
+	private static Logger log = LoggerFactory.getLogger(ArgumentSchemaValidator.class);
+
+	private final FlagDefinition schema;
 
 	public ArgumentSchemaValidator() {
-		loadSchema();
+		this.schema = loadSchema();
 	}
 
-	private void loadSchema() {
-		//do nothing
+	private FlagDefinition loadSchema() {
+		return new SimpleFlagDefinition("-d", ArgumentType.DUAL);
 	}
 
 	public List<ValidateOperandResult> validate(String[] arguments) {
-		var definition = new SimpleFlagDefinition("-d", ArgumentType.DUAL);
-		var flag = definition.parse(arguments);
+		var flag = schema.parse(arguments);
 		if (flag == null) {
-			return List.of(ValidateOperandResult.error(flag));
+			return List.of();
 		}
+
+		return validate(flag);
+	}
+
+	private List<ValidateOperandResult> validate(Flag flag) {
 		var validator = new SimpleFlagSchemaValidator();
 		return validator.validate(List.of(flag))
 						.stream()
