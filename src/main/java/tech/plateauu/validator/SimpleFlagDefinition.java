@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//TODO Need to be rethinking this
 public class SimpleFlagDefinition implements FlagDefinition {
 
 	private final String name;

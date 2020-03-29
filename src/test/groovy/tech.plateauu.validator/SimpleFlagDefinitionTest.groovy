@@ -40,4 +40,13 @@ class SimpleFlagDefinitionTest extends Specification {
         result.operand == expectedOperand
     }
 
+    def "Should return null when input not contains flag"() {
+        given:
+        def definition = new SimpleFlagDefinition("-d", ArgumentType.SINGLE)
+        def flags = ['-f', '/dev/null']
+
+        expect:
+        !definition.parse(flags as String[])
+    }
+
 }
