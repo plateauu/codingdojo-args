@@ -13,7 +13,7 @@ class SimpleFlagSchemaValidator implements FlagSchemaValidator {
 	}
 
 	private ValidateOperandResult validateOperand(Flag flag) {
-		flag.validateOperand();
+		flag.validate();
 		return new ValidateOperandResult(flag);
 	}
 }

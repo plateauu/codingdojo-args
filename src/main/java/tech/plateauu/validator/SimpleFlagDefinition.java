@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class SimpleFlagDefinition implements FlagDefinition {
+public class SimpleFlagDefinition implements FlagDefinition {
 
 	private final Logger log = LoggerFactory.getLogger(SimpleFlagDefinition.class);
 
@@ -21,7 +21,6 @@ class SimpleFlagDefinition implements FlagDefinition {
 
 	@Override
 	public Flag parse(String[] inputs) {
-		log.info("Started parsing arguments for flag name {}: {}", name, String.join(" ", inputs));
 		var args = Arrays.stream(inputs)
 						 .collect(Collectors.toUnmodifiableList());
 
@@ -29,6 +28,9 @@ class SimpleFlagDefinition implements FlagDefinition {
 			log.info("Nothing has been parsed");
 			return null;
 		}
+
+		var instrString = String.join(" ", inputs);
+		log.info("Started parsing arguments for flag name {}: {}", name, instrString);
 
 		var idx = args.indexOf(name);
 		return switch (type) {

@@ -1,5 +1,7 @@
 package tech.plateauu.validator;
 
+import org.jetbrains.annotations.Nullable;
+
 class ValidateOperandResult {
 	private final Flag flag;
 	private final Result result;
@@ -18,7 +20,7 @@ class ValidateOperandResult {
 		return new ValidateOperandResult(flag, Result.OK);
 	}
 
-	static ValidateOperandResult error(Flag flag) {
+	static ValidateOperandResult error(@Nullable Flag flag) {
 		return new ValidateOperandResult(flag, Result.ERROR);
 	}
 

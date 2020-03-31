@@ -1,6 +1,6 @@
 package tech.plateauu.validator;
 
-class Flag {
+public class Flag {
 	private final String name;
 	private final String operand;
 	private final ArgumentType type;
@@ -19,7 +19,7 @@ class Flag {
 		return new Flag(name, operand, ArgumentType.DUAL);
 	}
 
-	void validateOperand() {
+	void validate() {
 		if (type.isSingleType() && name != null) {
 			return;
 		}

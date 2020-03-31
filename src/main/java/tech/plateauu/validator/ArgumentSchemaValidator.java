@@ -23,8 +23,10 @@ public class ArgumentSchemaValidator {
 
 	public List<ValidateOperandResult> validate(String[] arguments) {
 		var flag = schema.parse(arguments);
+
 		if (flag == null) {
-			return List.of();
+			var error = ValidateOperandResult.error(null);
+			return List.of(error);
 		}
 
 		return validate(flag);
