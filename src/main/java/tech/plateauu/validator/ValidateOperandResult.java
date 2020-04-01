@@ -2,6 +2,8 @@ package tech.plateauu.validator;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 class ValidateOperandResult {
 	private final Flag flag;
 	private final Result result;
@@ -26,5 +28,19 @@ class ValidateOperandResult {
 
 	enum Result {
 		OK, ERROR
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ValidateOperandResult that = (ValidateOperandResult) o;
+		return Objects.equals(flag, that.flag) &&
+				result == that.result;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(flag, result);
 	}
 }
