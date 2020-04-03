@@ -1,0 +1,14 @@
+[
+    {
+        "flag": "-d",
+        "operand": "true",
+        "optional": true
+    },
+    {
+        "flag": "-f",
+        "operand": "false",
+        "optional": false
+    }
+]
+
+
