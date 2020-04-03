@@ -21,6 +21,7 @@ class Flag {
 		return new Flag(name, operand, ArgumentType.DUAL);
 	}
 
+	//TODO This exception shuold be different
 	void validate() {
 		if (type.isSingleType() && name != null) {
 			return;
