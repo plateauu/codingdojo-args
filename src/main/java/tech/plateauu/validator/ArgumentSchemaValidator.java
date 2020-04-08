@@ -2,6 +2,7 @@ package tech.plateauu.validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tech.plateauu.validator.definition.Definition;
 import tech.plateauu.validator.definition.JsonDefinitionParser;
 
 import java.util.List;
@@ -19,11 +20,12 @@ public class ArgumentSchemaValidator {
 	}
 
 	private List<FlagDefinition> loadSchema() {
-		var def = new JsonDefinitionParser().parse();
+		Definition parse = new JsonDefinitionParser().parse();
 		var definition = new SimpleFlagDefinition("-d", ArgumentType.DUAL);
 		return List.of(definition);
 	}
 
+	//MappedDefinition and flagDefinition are the same
 	public List<ValidateOperandResult> validate(String[] arguments) {
 		Flag flag = schema.get(0).parse(arguments);
 
