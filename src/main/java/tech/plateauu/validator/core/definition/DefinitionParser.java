@@ -1,4 +1,4 @@
-package tech.plateauu.validator.definition;
+package tech.plateauu.validator.core.definition;
 
 public interface DefinitionParser {
 

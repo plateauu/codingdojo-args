@@ -1,10 +1,11 @@
-package tech.plateauu.validator;
+package tech.plateauu.validator.core;
 
 import org.jetbrains.annotations.Nullable;
+import tech.plateauu.validator.core.flag.Flag;
 
 import java.util.Objects;
 
-class ValidateOperandResult {
+public class ValidateOperandResult {
 	private final Flag flag;
 	private final Result result;
 
@@ -42,5 +43,11 @@ class ValidateOperandResult {
 	@Override
 	public int hashCode() {
 		return Objects.hash(flag, result);
+	}
+
+	@Override
+	public String toString() {
+		return "ValidateOperandResult[ flag=" + flag +
+				", result=" + result + ']';
 	}
 }

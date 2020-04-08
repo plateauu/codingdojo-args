@@ -1,4 +1,6 @@
-package tech.plateauu.validator;
+package tech.plateauu.validator.core.flag;
+
+import tech.plateauu.validator.core.definition.ArgumentType;
 
 import java.util.Objects;
 
@@ -21,8 +23,8 @@ public class Flag {
 		return new Flag(name, operand, ArgumentType.DUAL);
 	}
 
-	//TODO This exception shuold be different
-	void validate() {
+	//TODO This exception should be different
+	public void validate() {
 		if (type.isSingleType() && name != null) {
 			return;
 		}
@@ -45,5 +47,13 @@ public class Flag {
 	@Override
 	public int hashCode() {
 		return Objects.hash(name, operand, type);
+	}
+
+	@Override
+	public String toString() {
+		return "Flag[" +
+				"name='" + name + '\'' +
+				", operand='" + operand + '\'' +
+				']';
 	}
 }

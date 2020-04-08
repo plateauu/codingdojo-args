@@ -1,4 +1,4 @@
-package tech.plateauu.validator;
+package tech.plateauu.validator.core.flag;
 
 import java.util.List;
 import java.util.Optional;

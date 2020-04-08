@@ -1,10 +1,12 @@
-package tech.plateauu.validator.definition;
+package tech.plateauu.validator.core.definition;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tech.plateauu.validator.core.flag.FlagDefinition;
+import tech.plateauu.validator.core.flag.MappedDefinition;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +33,7 @@ public class JsonDefinitionParser implements DefinitionParser {
 	}
 
 	@Nullable
-	private List<MappedDefinition> parseMappedDefinition(InputStream stream) throws IOException {
+	private List<FlagDefinition> parseMappedDefinition(InputStream stream) throws IOException {
 		var mapper = new ObjectMapper();
 		var typeFactory = mapper.getTypeFactory();
 		CollectionType collectionType = typeFactory.constructCollectionType(List.class, MappedDefinition.class);

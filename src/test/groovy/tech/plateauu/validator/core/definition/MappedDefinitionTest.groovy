@@ -1,8 +1,9 @@
-package tech.plateauu.validator.definition
+package tech.plateauu.validator.core.definition
 
 import spock.lang.Specification
+import tech.plateauu.validator.core.flag.MappedDefinition
 
-class SimpleFlagDefinitionTest extends Specification {
+class MappedDefinitionTest extends Specification {
 
     def "Should parse flag of dual type with operand"() {
         given:

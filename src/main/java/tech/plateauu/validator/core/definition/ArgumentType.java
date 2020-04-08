@@ -1,4 +1,4 @@
-package tech.plateauu.validator;
+package tech.plateauu.validator.core.definition;
 
 public enum ArgumentType {
 	SINGLE(false),
@@ -10,11 +10,11 @@ public enum ArgumentType {
 		this.operand = operand;
 	}
 
-	boolean isSingleType() {
+	public boolean isSingleType() {
 		return this == SINGLE;
 	}
 
-	boolean isNotSingle() {
+	public boolean isNotSingle() {
 		return !isSingleType();
 	}
 }

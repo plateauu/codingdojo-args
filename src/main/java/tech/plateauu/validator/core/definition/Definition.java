@@ -1,6 +1,7 @@
-package tech.plateauu.validator.definition;
+package tech.plateauu.validator.core.definition;
 
-import tech.plateauu.validator.Flag;
+import tech.plateauu.validator.core.flag.Flag;
+import tech.plateauu.validator.core.flag.FlagDefinition;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.stream.Collectors;
 
 public class Definition {
 
-	public final List<MappedDefinition> definitions;
+	public final List<FlagDefinition> definitions;
 
-	public Definition(List<MappedDefinition> definitions) {
+	public Definition(List<FlagDefinition> definitions) {
 		this.definitions = definitions;
 	}
 

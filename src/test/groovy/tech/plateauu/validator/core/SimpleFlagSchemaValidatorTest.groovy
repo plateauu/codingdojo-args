@@ -1,6 +1,9 @@
-package tech.plateauu.validator
+package tech.plateauu.validator.core
 
 import spock.lang.Specification
+import tech.plateauu.validator.core.SimpleFlagSchemaValidator
+import tech.plateauu.validator.core.ValidateOperandResult
+import tech.plateauu.validator.core.flag.Flag
 
 class SimpleFlagSchemaValidatorTest extends Specification {
 

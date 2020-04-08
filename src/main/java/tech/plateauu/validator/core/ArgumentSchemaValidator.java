@@ -1,7 +1,8 @@
-package tech.plateauu.validator;
+package tech.plateauu.validator.core;
 
-import tech.plateauu.validator.definition.Definition;
-import tech.plateauu.validator.definition.JsonDefinitionParser;
+import tech.plateauu.validator.core.definition.Definition;
+import tech.plateauu.validator.core.definition.JsonDefinitionParser;
+import tech.plateauu.validator.core.flag.Flag;
 
 import java.util.List;
 import java.util.Objects;

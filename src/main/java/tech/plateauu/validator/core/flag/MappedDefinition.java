@@ -1,12 +1,10 @@
-package tech.plateauu.validator.definition;
+package tech.plateauu.validator.core.flag;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.plateauu.validator.ArgumentType;
-import tech.plateauu.validator.Flag;
-import tech.plateauu.validator.FlagDefinition;
+import tech.plateauu.validator.core.definition.ArgumentType;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +29,8 @@ public class MappedDefinition implements FlagDefinition {
 	public static MappedDefinition of(
 			@JsonProperty("name") String name,
 			@JsonProperty("operand") boolean operand,
-			@JsonProperty("optional") boolean optional) {
+			@JsonProperty("optional") boolean optional
+	) {
 		var type = operand ? ArgumentType.DUAL : ArgumentType.SINGLE;
 		return new MappedDefinition(name, operand, optional, type);
 	}
@@ -67,10 +66,11 @@ public class MappedDefinition implements FlagDefinition {
 		return Flag.single(name);
 	}
 
+	//TODO MM: Need to change fail path
 	private String getOperand(List<String> args, int flagIndex) {
 		var operand = args.get(++flagIndex);
 		if (operand.startsWith("-")) {
-			throw new RuntimeException("There should be a operand after " + name + " flag");
+			throw new RuntimeException("There should be an operand after " + name + " flag");
 		}
 		return operand;
 	}

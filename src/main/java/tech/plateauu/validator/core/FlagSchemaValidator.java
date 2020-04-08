@@ -1,4 +1,6 @@
-package tech.plateauu.validator;
+package tech.plateauu.validator.core;
+
+import tech.plateauu.validator.core.flag.Flag;
 
 import java.util.List;
 
