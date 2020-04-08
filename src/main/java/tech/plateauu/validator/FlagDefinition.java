@@ -1,7 +1,10 @@
 package tech.plateauu.validator;
 
-interface FlagDefinition {
+import java.util.List;
+import java.util.Optional;
 
-	Flag parse(String[] args);
+public interface FlagDefinition {
+
+	Optional<Flag> parse(List<String> args);
 
 }

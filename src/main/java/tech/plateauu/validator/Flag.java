@@ -2,7 +2,7 @@ package tech.plateauu.validator;
 
 import java.util.Objects;
 
-class Flag {
+public class Flag {
 	private final String name;
 	private final String operand;
 	private final ArgumentType type;
@@ -13,11 +13,11 @@ class Flag {
 		this.type = type;
 	}
 
-	static Flag single(String name) {
+	public static Flag single(String name) {
 		return new Flag(name, null, ArgumentType.SINGLE);
 	}
 
-	static Flag dual(String name, String operand) {
+	public static Flag dual(String name, String operand) {
 		return new Flag(name, operand, ArgumentType.DUAL);
 	}
 

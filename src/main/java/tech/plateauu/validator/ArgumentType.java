@@ -1,6 +1,6 @@
 package tech.plateauu.validator;
 
-enum ArgumentType {
+public enum ArgumentType {
 	SINGLE(false),
 	DUAL(true);
 
