@@ -1,0 +1,15 @@
+[
+    {
+        "name": "-d",
+        "operand": true,
+        "optional": true
+    },
+    {
+        "name": "-f",
+        "operand": false,
+        "optional": false,
+        "corrupted": true
+    }
+]
+
+

@@ -43,7 +43,7 @@ public class MappedDefinition implements FlagDefinition {
 		}
 
 		var instrString = String.join(" ", inputs);
-		log.info("Started parsing arguments for flag name {}: {}", name, instrString);
+		log.info("Started parsing arguments for flag name: {}. Inputs: {}", name, instrString);
 
 		var idx = inputs.indexOf(name);
 		Flag flag = switch (type) {

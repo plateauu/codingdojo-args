@@ -1,16 +1,11 @@
 package tech.plateauu.validator.core.definition;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
-import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.plateauu.validator.core.flag.FlagDefinition;
-import tech.plateauu.validator.core.flag.MappedDefinition;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import java.io.File;
+import java.net.URL;
+import java.util.Objects;
 
 //TODO Need a test
 public class JsonDefinitionParser implements DefinitionParser {
@@ -21,32 +16,17 @@ public class JsonDefinitionParser implements DefinitionParser {
 
 	@Override
 	public Definition parse() {
-		InputStream stream = readFile();
-		Definition definition = null;
-		try {
-			var mappedDefinition = parseMappedDefinition(stream);
-			definition = new Definition(mappedDefinition);
-		} catch (IOException e) {
-			LOG.error("Exception during mapping", e);
-		}
-		return definition;
+		var file = readFile();
+		return JsonDefinitionParserUtil.parse(file);
 	}
 
-	@Nullable
-	private List<FlagDefinition> parseMappedDefinition(InputStream stream) throws IOException {
-		var mapper = new ObjectMapper();
-		var typeFactory = mapper.getTypeFactory();
-		CollectionType collectionType = typeFactory.constructCollectionType(List.class, MappedDefinition.class);
-		return mapper.readValue(stream, collectionType);
-	}
 
-	@Nullable
-	private InputStream readFile() {
-		var stream = JsonDefinitionParser.class.getClassLoader().getResourceAsStream(FILE_NAME);
-		if (stream != null) {
-			LOG.info("Found a JSON definition at file: " + FILE_NAME);
-		}
-		return stream;
+	private File readFile() {
+		URL resource = JsonDefinitionParser.class.getClassLoader().getResource(FILE_NAME);
+		Objects.requireNonNull(resource);
+		File file = new File(resource.getPath());
+		LOG.info("Found a JSON definition at file: " + file.getAbsolutePath());
+		return file;
 	}
 
 }
