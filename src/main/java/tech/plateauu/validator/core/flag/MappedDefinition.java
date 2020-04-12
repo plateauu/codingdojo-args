@@ -15,6 +15,7 @@ public class MappedDefinition implements FlagDefinition {
 
 	private final String name;
 	private final boolean operand;
+	//TODO MM: Optional feature should be implemented in future
 	private final boolean optional;
 	private final ArgumentType type;
 
@@ -66,13 +67,14 @@ public class MappedDefinition implements FlagDefinition {
 		return Flag.single(name);
 	}
 
-	//TODO MM: Need to change fail path
 	private String getOperand(List<String> args, int flagIndex) {
-		var operand = args.get(++flagIndex);
-		if (operand.startsWith("-")) {
-			throw new RuntimeException("There should be an operand after " + name + " flag");
+		try {
+			return Optional.ofNullable(args.get(++flagIndex))
+						   .filter(op -> op.startsWith("-"))
+						   .orElseThrow(() -> new RuntimeException("There should be an operand after " + name + " flag"));
+		} catch (IndexOutOfBoundsException ex) {
+			throw new IllegalArgumentException("There is no more parameters after: " + name + " flag, but operand is obligatory");
 		}
-		return operand;
 	}
 
 	private boolean isPresent(List<String> args) {

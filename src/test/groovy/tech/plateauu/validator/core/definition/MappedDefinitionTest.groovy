@@ -24,6 +24,32 @@ class MappedDefinitionTest extends Specification {
         flag.operand == expectedOperand
     }
 
+    def "Should throw exception when operand is obligatory but is not passed"() {
+        given:
+        def definition = MappedDefinition.of("-d", true, true)
+        def flag = '-d'
+        def flags = [flag]
+
+        when:
+        definition.parse(flags)
+
+        then:
+        thrown(IllegalArgumentException)
+    }
+
+    def "Should throw exception when operand is not passed"() {
+        given:
+        def definition = MappedDefinition.of("-d", true, true)
+        def flag = '-d'
+        def flags = [flag, null]
+
+        when:
+        definition.parse(flags)
+
+        then:
+        thrown(RuntimeException)
+    }
+
     def "Should parse flag of single type without operand"() {
         given:
         def definition = MappedDefinition.of("-d", false, true)
