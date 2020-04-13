@@ -70,8 +70,8 @@ public class MappedDefinition implements FlagDefinition {
 	private String getOperand(List<String> args, int flagIndex) {
 		try {
 			return Optional.ofNullable(args.get(++flagIndex))
-						   .filter(op -> op.startsWith("-"))
-						   .orElseThrow(() -> new RuntimeException("There should be an operand after " + name + " flag"));
+					.filter(op -> !op.startsWith("-"))
+					.orElseThrow(() -> new RuntimeException("There should be an operand after " + name + " flag"));
 		} catch (IndexOutOfBoundsException ex) {
 			throw new IllegalArgumentException("There is no more parameters after: " + name + " flag, but operand is obligatory");
 		}

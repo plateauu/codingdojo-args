@@ -1,9 +1,9 @@
 [
-    {
-      "flag": "-d",
-      "operand": true,
-      "optional": true
-    },
+  {
+    "flag": "-d",
+    "operand": true,
+    "optional": true
+  },
   {
     "flag": "-f",
     "operand": false,

@@ -10,8 +10,8 @@ class SimpleFlagSchemaValidator implements FlagSchemaValidator {
 	@Override
 	public List<ValidateOperandResult> validate(List<Flag> flags) {
 		return flags.stream()
-					.map(this::validateOperand)
-					.collect(Collectors.toList());
+				.map(this::validateOperand)
+				.collect(Collectors.toList());
 	}
 
 	private ValidateOperandResult validateOperand(Flag flag) {

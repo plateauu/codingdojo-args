@@ -18,12 +18,12 @@ public class Definition {
 
 	public List<Flag> parse(String[] inputs) {
 		var args = Arrays.stream(inputs)
-						 .collect(Collectors.toUnmodifiableList());
+				.collect(Collectors.toUnmodifiableList());
 
 		return definitions.stream()
-						  .map(d -> d.parse(args))
-						  .filter(Optional::isPresent)
-						  .map(Optional::get)
-						  .collect(Collectors.toUnmodifiableList());
+				.map(d -> d.parse(args))
+				.filter(Optional::isPresent)
+				.map(Optional::get)
+				.collect(Collectors.toUnmodifiableList());
 	}
 }

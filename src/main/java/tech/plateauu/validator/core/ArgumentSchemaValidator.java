@@ -34,8 +34,8 @@ public class ArgumentSchemaValidator {
 	private List<ValidateOperandResult> validate(List<Flag> flags) {
 		var validator = new SimpleFlagSchemaValidator();
 		return validator.validate(flags)
-						.stream()
-						.filter(Objects::nonNull)
-						.collect(Collectors.toUnmodifiableList());
+				.stream()
+				.filter(Objects::nonNull)
+				.collect(Collectors.toUnmodifiableList());
 	}
 }
