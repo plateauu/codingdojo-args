@@ -7,7 +7,6 @@ import java.io.File;
 import java.net.URL;
 import java.util.Objects;
 
-//TODO Need a test
 public class JsonDefinitionParser implements DefinitionParser {
 
 	private static final Logger LOG = LoggerFactory.getLogger(JsonDefinitionParser.class);

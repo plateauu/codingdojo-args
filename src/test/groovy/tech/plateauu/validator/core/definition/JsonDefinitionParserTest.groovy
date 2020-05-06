@@ -6,8 +6,10 @@ import tech.plateauu.validator.core.flag.MappedDefinition
 class JsonDefinitionParserTest extends Specification {
 
     def 'Should parse definition without errors'() {
-        when:
+        given:
         def resource = JsonDefinitionParserTest.class.getClassLoader().getResource("testDefinition.json")
+
+        when:
         def definition = JsonDefinitionParserUtil.parse(new File(resource.toURI()))
 
         then:
