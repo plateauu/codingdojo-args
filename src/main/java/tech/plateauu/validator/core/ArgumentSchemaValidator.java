@@ -1,7 +1,6 @@
 package tech.plateauu.validator.core;
 
 import tech.plateauu.validator.core.definition.Definition;
-import tech.plateauu.validator.core.definition.JsonDefinitionParser;
 import tech.plateauu.validator.core.flag.Flag;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class ArgumentSchemaValidator {
 	}
 
 	private Definition loadSchema() {
-		return new JsonDefinitionParser().parse();
+		return new SchemaDefinitionLoader().load();
 	}
 
 	public List<ValidateOperandResult> validate(String[] arguments) {
