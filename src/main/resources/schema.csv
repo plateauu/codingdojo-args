@@ -1,5 +1,3 @@
-flag, operand, optional
-"-d", true, true
-"-f",true, false
-
-
+flag,operand,optional
+"-d",true,true
+"-f",true,false

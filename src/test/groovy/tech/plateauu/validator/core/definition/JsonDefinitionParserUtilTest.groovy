@@ -3,11 +3,11 @@ package tech.plateauu.validator.core.definition
 import spock.lang.Specification
 import tech.plateauu.validator.core.flag.MappedDefinition
 
-class JsonDefinitionParserTest extends Specification {
+class JsonDefinitionParserUtilTest extends Specification {
 
     def 'Should parse definition without errors'() {
         given:
-        def resource = JsonDefinitionParserTest.class.getClassLoader().getResource("testDefinition.json")
+        def resource = JsonDefinitionParserUtilTest.class.getClassLoader().getResource("testDefinition.json")
 
         when:
         def definition = JsonDefinitionParserUtil.parse(new File(resource.toURI()))
@@ -33,8 +33,8 @@ class JsonDefinitionParserTest extends Specification {
         }
     }
 
-    def "should throw exception and stop program when file is corrupted"() {
-        def resource = JsonDefinitionParserTest.class.getClassLoader().getResource("testDefinitionCorrupted.json")
+    def 'should throw exception and stop program when file is corrupted'() {
+        def resource = JsonDefinitionParserUtilTest.class.getClassLoader().getResource("testDefinitionCorrupted.json")
 
         when:
         JsonDefinitionParserUtil.parse(new File(resource.toURI()))

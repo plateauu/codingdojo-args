@@ -1,0 +1,3 @@
+flag,operand,optional
+-d,t rue,true
+-f,true,false
