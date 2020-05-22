@@ -1,3 +1,4 @@
 flag,operand,optional
 -d,true,true
 -f,true,false
+csv,true,false

@@ -10,7 +10,11 @@ public class JsonDefinitionParser implements DefinitionParser {
 
 	private static final Logger LOG = LoggerFactory.getLogger(JsonDefinitionParser.class);
 
-	private static final String FILE_NAME = "definition.json";
+	private final String fileName;
+
+	public JsonDefinitionParser(String fileName) {
+		this.fileName = fileName;
+	}
 
 	@Override
 	public Optional<Definition> parse() {
@@ -20,7 +24,7 @@ public class JsonDefinitionParser implements DefinitionParser {
 
 
 	private Optional<File> readFile() {
-		return Optional.ofNullable(JsonDefinitionParser.class.getClassLoader().getResource(FILE_NAME))
+		return Optional.ofNullable(JsonDefinitionParser.class.getClassLoader().getResource(fileName))
 				.map(r -> {
 					var file = new File(r.getPath());
 					LOG.info("Found a definition at JSON file: " + file.getAbsolutePath());
