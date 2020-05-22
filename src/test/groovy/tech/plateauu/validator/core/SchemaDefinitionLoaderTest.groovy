@@ -9,7 +9,7 @@ class SchemaDefinitionLoaderTest extends Specification {
     def "Should load definitions from json schema"() {
         given:
         def loader = new SchemaDefinitionLoader()
-        loader.parsers[SchemaDefinitionLoader.ParserType.JSON] = new JsonDefinitionParser("testDefinition.json")
+        loader.parsers[ParserType.JSON] = new JsonDefinitionParser("testDefinition.json")
 
         when:
         def definition = loader.load()
@@ -23,8 +23,8 @@ class SchemaDefinitionLoaderTest extends Specification {
     def "Should load definitions from csv schema"() {
         given:
         def loader = new SchemaDefinitionLoader()
-        loader.parsers.remove(SchemaDefinitionLoader.ParserType.JSON)
-        loader.parsers[SchemaDefinitionLoader.ParserType.CSV] = new CsvDefinitionParser("testDefinition.csv")
+        loader.parsers.remove(ParserType.JSON)
+        loader.parsers[ParserType.CSV] = new CsvDefinitionParser("testDefinition.csv")
 
         when:
         def definition = loader.load()

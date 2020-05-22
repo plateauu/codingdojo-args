@@ -2,6 +2,7 @@ package tech.plateauu.validator.core.definition;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tech.plateauu.validator.core.ParserType;
 
 import java.io.File;
 import java.util.Optional;
@@ -22,6 +23,10 @@ public class JsonDefinitionParser implements DefinitionParser {
 				.map(JsonDefinitionParserUtil::parse);
 	}
 
+	@Override
+	public ParserType type() {
+		return ParserType.JSON;
+	}
 
 	private Optional<File> readFile() {
 		return Optional.ofNullable(JsonDefinitionParser.class.getClassLoader().getResource(fileName))
