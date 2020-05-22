@@ -16,7 +16,7 @@ class CsvDefinitionParserUtilTest extends Specification {
         definition
 
         and:
-        definition.definitions.size() == 2
+        definition.definitions.size() == 3
 
         and:
         Map<String, MappedDefinition> entries = definition.definitions.collectEntries { [(it.name): it] }
@@ -26,6 +26,10 @@ class CsvDefinitionParserUtilTest extends Specification {
         }
 
         with(entries["-f"]) {
+            operand
+            !optional
+        }
+        with(entries["csv"]) {
             operand
             !optional
         }

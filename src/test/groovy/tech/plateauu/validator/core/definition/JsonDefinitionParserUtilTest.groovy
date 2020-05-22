@@ -16,18 +16,21 @@ class JsonDefinitionParserUtilTest extends Specification {
         definition
 
         and:
-        definition.definitions.size() == 2
+        definition.definitions.size() == 3
 
         and:
         Map<String, MappedDefinition> entries = definition.definitions.collectEntries { [(it.name): it] }
         with(entries["-d"]) {
-            name == '-d'
             operand
             optional
         }
 
         with(entries["-f"]) {
-            name == '-f'
+            !operand
+            !optional
+        }
+
+        with(entries["json"]) {
             !operand
             !optional
         }

@@ -22,20 +22,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.6.1</version>
+            <version>5.7.0-M1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
             <version>2.0-M2-groovy-3.0</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- more dependencies -->
-        <dependency>  <!--Only necessary for surefire to run spock tests during the maven build -->
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>5.6.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -55,7 +48,6 @@
             <version>1.8</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
