@@ -8,6 +8,11 @@
         "name": "-f",
         "operand": false,
         "optional": false
+    },
+    {
+        "name": "json",
+        "operand": false,
+        "optional": false
     }
 ]
 

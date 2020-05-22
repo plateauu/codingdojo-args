@@ -3,38 +3,40 @@ package tech.plateauu.validator.core.definition
 import spock.lang.Specification
 import tech.plateauu.validator.core.flag.MappedDefinition
 
-class JsonDefinitionParserTest extends Specification {
+class CsvDefinitionParserUtilTest extends Specification {
 
     def 'Should parse definition without errors'() {
         given:
-        def resource = JsonDefinitionParserTest.class.getClassLoader().getResource("testDefinition.json")
+        def resource = CsvDefinitionParserUtilTest.class.getClassLoader().getResource("testDefinition.csv")
 
         when:
-        def definition = JsonDefinitionParserUtil.parse(new File(resource.toURI()))
+        def definition = CsvDefinitionParserUtil.parse(new File(resource.toURI()))
 
         then:
         definition
 
         and:
-        definition.definitions.size() == 2
+        definition.definitions.size() == 3
 
         and:
         Map<String, MappedDefinition> entries = definition.definitions.collectEntries { [(it.name): it] }
         with(entries["-d"]) {
-            name == '-d'
             operand
             optional
         }
 
         with(entries["-f"]) {
-            name == '-f'
-            !operand
+            operand
+            !optional
+        }
+        with(entries["csv"]) {
+            operand
             !optional
         }
     }
 
-    def "should throw exception and stop program when file is corrupted"() {
-        def resource = JsonDefinitionParserTest.class.getClassLoader().getResource("testDefinitionCorrupted.json")
+    def 'should throw exception and stop program when file is corrupted'() {
+        def resource = CsvDefinitionParserUtilTest.class.getClassLoader().getResource("testDefinitionCorrupted.csv")
 
         when:
         JsonDefinitionParserUtil.parse(new File(resource.toURI()))

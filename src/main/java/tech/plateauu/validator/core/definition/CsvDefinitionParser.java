@@ -6,30 +6,27 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.Optional;
 
-public class JsonDefinitionParser implements DefinitionParser {
+public class CsvDefinitionParser implements DefinitionParser {
 
-	private static final Logger LOG = LoggerFactory.getLogger(JsonDefinitionParser.class);
+	private static final Logger LOG = LoggerFactory.getLogger(CsvDefinitionParser.class);
 
 	private final String fileName;
 
-	public JsonDefinitionParser(String fileName) {
+	public CsvDefinitionParser(String fileName) {
 		this.fileName = fileName;
 	}
 
 	@Override
 	public Optional<Definition> parse() {
-		return readFile()
-				.map(JsonDefinitionParserUtil::parse);
+		return readFile().map(CsvDefinitionParserUtil::parse);
 	}
-
 
 	private Optional<File> readFile() {
 		return Optional.ofNullable(JsonDefinitionParser.class.getClassLoader().getResource(fileName))
 				.map(r -> {
-					var file = new File(r.getPath());
-					LOG.info("Found a definition at JSON file: " + file.getAbsolutePath());
+					File file = new File(r.getPath());
+					LOG.info("Found a definition at CSV file: " + file.getAbsolutePath());
 					return file;
 				});
 	}
-
 }
