@@ -16,7 +16,7 @@ import static java.lang.Boolean.parseBoolean;
 public class CsvDefinitionParserUtil {
 
 	public static Definition parse(File file) {
-		var records = createParser(file);
+		var records = parseFile(file);
 		var flagDefinitions = new ArrayList<FlagDefinition>();
 
 		for (CSVRecord record : records) {
@@ -31,10 +31,9 @@ public class CsvDefinitionParserUtil {
 		return new Definition(flagDefinitions);
 	}
 
-	private static CSVParser createParser(File file) {
+	private static CSVParser parseFile(File file) {
 		var csvFormat = CSVFormat.RFC4180
 				.withFirstRecordAsHeader()
-
 				.withIgnoreHeaderCase();
 		try {
 			FileReader fileReader = new FileReader(file);

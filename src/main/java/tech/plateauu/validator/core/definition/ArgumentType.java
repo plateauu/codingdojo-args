@@ -14,7 +14,7 @@ public enum ArgumentType {
 		return this == SINGLE;
 	}
 
-	public boolean isNotSingle() {
+	public boolean isDualType() {
 		return !isSingleType();
 	}
 }

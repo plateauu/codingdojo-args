@@ -28,7 +28,7 @@ public class Flag {
 		if (type.isSingleType() && name != null) {
 			return;
 		}
-		if (type.isNotSingle() && name != null && operand != null) {
+		if (type.isDualType() && name != null && operand != null) {
 			return;
 		}
 		throw new RuntimeException("Field " + name + " has is operand flag but operand is [ " + operand + "]");
