@@ -39,7 +39,7 @@ class CsvDefinitionParserUtilTest extends Specification {
         def resource = CsvDefinitionParserUtilTest.class.getClassLoader().getResource("testDefinitionCorrupted.csv")
 
         when:
-        JsonDefinitionParserUtil.parse(new File(resource.toURI()))
+        CsvDefinitionParserUtil.parse(new File(resource.toURI()))
 
         then:
         thrown RuntimeException

@@ -10,6 +10,9 @@ import java.util.List;
 
 class JsonDefinitionParserUtil {
 
+	private JsonDefinitionParserUtil() {
+	}
+
 	static Definition parse(File file) {
 		try {
 			var mappedDefinition = parseMappedDefinition(file);
